@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grand Meridian Zenith Hotel</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Nunito+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+  html, body { height: 100%; margin: 0; }
+  * { box-sizing: border-box; }
+  body { font-family: 'Nunito Sans', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+
+  /* Smooth scrolling */
+  html { scroll-behavior: smooth; }
+
+  /* Futuristic gradient background */
+  .hero-section {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 25%, #0d1a3e 50%, #1a0f4d 75%, #0a0e27 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animated grid overlay */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent),
+      linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    animation: gridShift 20s linear infinite;
+    z-index: 1;
+  }
+
+  @keyframes gridShift {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+  }
+
+  /* Animated orbs with jelly effect */
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 20% 40%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 60%, rgba(147, 112, 219, 0.12) 0%, transparent 50%);
+    animation: orbFloat 15s ease-in-out infinite;
+    z-index: 0;
+    filter: blur(60px);
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-3%, 2%) scale(1.05); }
+    50% { transform: translate(-1%, -1%) scale(0.95); }
+    75% { transform: translate(2%, -2%) scale(1.02); }
+  }
+
+  /* Floating jelly blobs */
+  .jelly-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .jelly-blob-1 {
+    width: 300px; height: 300px;
+    background: radial-gradient(ellipse at 30% 30%, rgba(0, 255, 255, 0.4), rgba(0, 255, 255, 0.05));
+    top: 10%; left: -5%;
+    animation: jellyFloat1 20s ease-in-out infinite;
+  }
+  
+  .jelly-blob-2 {
+    width: 250px; height: 250px;
+    background: radial-gradient(ellipse at 40% 40%, rgba(147, 112, 219, 0.35), rgba(147, 112, 219, 0.05));
+    top: 30%; right: 5%;
+    animation: jellyFloat2 25s ease-in-out infinite;
+  }
+  
+  .jelly-blob-3 {
+    width: 280px; height: 280px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(0, 200, 255, 0.3), rgba(0, 200, 255, 0.05));
+    bottom: 10%; left: 10%;
+    animation: jellyFloat3 22s ease-in-out infinite;
+  }
+
+  @keyframes jellyFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(20px, -30px) scale(1.1); }
+    66% { transform: translate(-15px, 25px) scale(0.95); }
+  }
+  
+  @keyframes jellyFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-25px, 20px) scale(0.98); }
+    66% { transform: translate(30px, -15px) scale(1.08); }
+  }
+  
+  @keyframes jellyFloat3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(15px, 30px) scale(1.05); }
+    66% { transform: translate(-20px, -20px) scale(0.97); }
+  }
+
+  /* Cyber line animation */
+  .gold-line {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+    box-shadow: 0 0 10px #00ffff, 0 0 20px rgba(0, 255, 255, 0.5);
+    animation: cyberPulse 2.5s ease-out forwards;
+  }
+  @keyframes cyberPulse {
+    from { width: 0; opacity: 0; filter: blur(5px); }
+    to { width: 60px; opacity: 1; filter: blur(0); }
+  }
+
+  /* Section fade-in with glow */
+  .section-reveal { 
+    opacity: 0; 
+    transform: translateY(40px); 
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+  }
+  .section-reveal.visible { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+
+  /* Glassmorphism effect - frosted glass base */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+  }
+
+  .glass-effect-strong {
+    background: rgba(10, 14, 39, 0.4) !important;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Futuristic card with glow and glass */
+  .room-card { 
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    position: relative;
+    background: rgba(10, 14, 39, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(0, 255, 255, 0.05);
+  }
+  .room-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.15) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  .room-card:hover { 
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 255, 255, 0.25), inset 0 0 30px rgba(0, 255, 255, 0.1);
+    border-color: rgba(0, 255, 255, 0.6);
+    background: rgba(10, 14, 39, 0.7);
+  }
+  .room-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Image placeholder styling */
+  .img-placeholder {
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    gap: 8px; min-height: 200px;
+    position: relative;
+  }
+
+  /* Nav styles with glow */
+  .nav-link { 
+    position: relative; 
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+  }
+  .nav-link::after {
+    content: ''; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 0; 
+    height: 2px;
+    background: linear-gradient(90deg, #00ffff, #9370db);
+    box-shadow: 0 0 10px #00ffff;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { 
+    width: 100%; 
+  }
+  .nav-link:hover {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+
+  /* Menu item hover with accent */
+  .menu-item { 
+    transition: all 0.3s ease;
+    border-left: 2px solid transparent;
+    padding-left: 12px !important;
+    background: transparent !important;
+    border-radius: 8px;
+  }
+  .menu-item:hover { 
+    background: rgba(0, 255, 255, 0.1) !important;
+    border-left-color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Mobile nav */
+  .mobile-nav { 
+    transform: translateX(100%); 
+    transition: transform 0.3s ease;
+    background: rgba(10, 14, 39, 0.95) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(0, 255, 255, 0.2);
+  }
+  .mobile-nav.open { 
+    transform: translateX(0); 
+    box-shadow: -10px 0 40px rgba(0, 255, 255, 0.2);
+  }
+
+  /* Tab active state with glow */
+  .tab-btn { 
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+  .tab-btn.active { 
+    color: #00ffff;
+    border-bottom-color: #00ffff !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    background: rgba(0, 255, 255, 0.05);
+  }
+
+  /* Glitch effect on hover */
+  @keyframes glitch {
+    0% { text-shadow: 0 0 0 #00ffff; }
+    50% { text-shadow: 2px 2px 0 #00ffff, -2px -2px 0 #9370db; }
+    100% { text-shadow: 0 0 0 #00ffff; }
+  }
+
+  h1, h2 {
+    position: relative;
+  }
+
+  h1:hover {
+    animation: glitch 0.4s ease-in-out;
+  }
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background-color: #0a0e27;"><!-- Floating jelly blobs background -->
+   <div class="jelly-blob jelly-blob-1"></div>
+   <div class="jelly-blob jelly-blob-2"></div>
+   <div class="jelly-blob jelly-blob-3"></div><!-- Navigation -->
+   <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" style="background: transparent; border-bottom: 1px solid rgba(0, 255, 255, 0.1);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-20">
+      <div class="flex items-center gap-2">
+       <div style="color: #00ffff; filter: drop-shadow(0 0 10px #00ffff);">
+        <svg width="32" height="32" viewbox="0 0 32 32" fill="none">
+         <path d="M16 2L4 10v12l12 8 12-8V10L16 2z" stroke="currentColor" stroke-width="1.5" fill="none" /><path d="M16 8L10 12v8l6 4 6-4v-8l-6-4z" stroke="currentColor" stroke-width="1" fill="none" /><circle cx="16" cy="16" r="2" fill="currentColor" />
+        </svg>
+       </div><span id="nav-hotel-name" class="font-display text-xl font-semibold text-white" style="text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);">Grand Meridian Zenith</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8"><a href="#rooms" class="nav-link text-sm tracking-widest uppercase text-white opacity-80 hover:opacity-100">Rooms</a> <a href="#dining" class="nav-link text-sm tracking-widest uppercase text-white opacity-80 hover:opacity-100">Dining</a> <a href="#bar" class="nav-link text-sm tracking-widest uppercase text-white opacity-80 hover:opacity-100">Bar</a> <a href="#amenities" class="nav-link text-sm tracking-widest uppercase text-white opacity-80 hover:opacity-100">Amenities</a> <a href="#conference" class="nav-link text-sm tracking-widest uppercase text-white opacity-80 hover:opacity-100">Events</a> <a href="#contact" class="nav-link text-sm tracking-widest uppercase text-white opacity-80 hover:opacity-100">Contact</a> <a href="#rooms" class="px-5 py-2 text-sm tracking-wider uppercase border border-white/30 text-white hover:border-[#00ffff] hover:text-[#00ffff] hover:shadow-lg hover:shadow-[#00ffff]/30 transition-all duration-300">Book Now</a>
+      </div><button id="mobile-menu-btn" class="md:hidden text-white" onclick="toggleMobileNav()"> <i data-lucide="menu" style="width:24px;height:24px;"></i> </button>
+     </div>
+    </div>
+   </nav><!-- Mobile Nav -->
+   <div id="mobile-nav" class="mobile-nav fixed top-0 right-0 w-72 h-full z-50">
+    <div class="p-6"><button onclick="toggleMobileNav()" class="text-white mb-8"><i data-lucide="x" style="width:24px;height:24px;"></i></button>
+     <div class="flex flex-col gap-6"><a href="#rooms" onclick="toggleMobileNav()" class="text-white text-lg tracking-wider">Rooms</a> <a href="#dining" onclick="toggleMobileNav()" class="text-white text-lg tracking-wider">Dining</a> <a href="#bar" onclick="toggleMobileNav()" class="text-white text-lg tracking-wider">Bar</a> <a href="#amenities" onclick="toggleMobileNav()" class="text-white text-lg tracking-wider">Amenities</a> <a href="#conference" onclick="toggleMobileNav()" class="text-white text-lg tracking-wider">Events</a> <a href="#contact" onclick="toggleMobileNav()" class="text-white text-lg tracking-wider">Contact</a>
+     </div>
+    </div>
+   </div><!-- Hero Section -->
+   <section class="hero-section relative" style="min-height: 100%;">
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-6" style="min-height: 100%; padding-top: 120px; padding-bottom: 80px;">
+     <p class="text-sm tracking-[0.4em] uppercase mb-4" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);">Welcome to the future</p>
+     <h1 id="hero-title" class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-tight" style="text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);">Grand Meridian Zenith<br>
+       Hotel</h1>
+     <div class="gold-line mx-auto mb-6"></div>
+     <p id="hero-tagline" class="font-display text-xl sm:text-2xl italic mb-2" style="color: #00ffff; text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);">Experience Tomorrow, Today</p>
+     <p id="hero-subtitle" class="text-white/60 text-base sm:text-lg max-w-xl mb-10">Next-generation luxury awaits with cutting-edge design, immersive experiences, and the pinnacle of hospitality.</p>
+     <div class="flex flex-col sm:flex-row gap-4"><a href="#rooms" class="px-8 py-3 text-sm tracking-widest uppercase text-white border-2 hover:bg-[#00ffff]/20 hover:shadow-lg hover:shadow-[#00ffff]/50 transition-all duration-300" style="border-color: #00ffff;">Explore Rooms</a> <a href="#dining" class="px-8 py-3 text-sm tracking-widest uppercase transition-all duration-300 hover:shadow-lg hover:shadow-[#00ffff]/50" style="background: #00ffff; color: #ffffff;">Discover Dining</a>
+     </div>
+    </div><!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce"><i data-lucide="chevron-down" class="text-white/40" style="width:24px;height:24px;"></i>
+    </div>
+   </section><!-- Lobby Section -->
+   <section class="section-reveal py-20 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 100%);">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+       <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);">The Experience</p>
+       <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6 text-white">Our Grand Lobby</h2>
+       <div class="gold-line mb-6"></div>
+       <p class="text-lg leading-relaxed mb-4 text-white/70">Step into a world of refined futurism. Our lobby features soaring ceilings adorned with intelligent lighting, precision-cut surfaces, and cutting-edge furnishings that define modern luxury.</p>
+       <p class="leading-relaxed text-white/70">Relax in our interactive lounge seating, enjoy AI-curated welcome experiences, or let our concierge arrange anything you need with precision technology.</p>
+      </div>
+      <div class="img-placeholder rounded-lg" style="min-height: 350px; background-size: cover; background-position: center; background-image: url('images/Lobby.jpeg');" id="lobby-image">
+      </div>
+     </div>
+    </div>
+   </section><!-- Room Rates Section -->
+   <section id="rooms" class="section-reveal py-20 px-4 sm:px-6 lg:px-8" style="background: #0a0e27;">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);">Accommodations</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-4 text-white">Room Rates</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+      <p style="color: #aaa;" class="max-w-xl mx-auto">Each room is a sanctuary of innovation, featuring smart amenities, immersive lighting, and commanding views.</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"><!-- Deluxe -->
+      <div class="room-card rounded-xl overflow-hidden shadow-md">
+       <div class="img-placeholder" style="background-image: url('images/deluxe.jpeg'); background-size: cover; background-position: center; min-height: 220px;"><i data-lucide="crown" style="width:40px;height:40px;color:#00ffff;"></i></span>
+       </div>
+       <div class="p-6">
+        <div class="flex justify-between items-start mb-3">
+         <h3 class="font-display text-xl font-semibold text-white">Deluxe Suite</h3><span id="price-deluxe" class="font-display text-2xl font-bold" style="color: #00ffff;">₱11,000-₱13,000</span>
+        </div>
+        <p class="text-xs uppercase tracking-wider mb-3" style="color: #888;">per night</p>
+        <p class="text-sm mb-4" style="color: #d0d0d0;">Spacious suite with premium king bed, separate living area, panoramic city views, and smart bath amenities.</p>
+        <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">55 m²</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">City View</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">Smart Systems</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">Balcony</span>
+        </div><a href="#contact" class="block text-center py-2 text-sm tracking-wider uppercase border transition-all hover:text-white hover:shadow-lg hover:shadow-[#00ffff]/30" style="border-color: #00ffff; color: #00ffff;" onmouseover="this.style.background='#00ffff';this.style.color='#0a0e27'" onmouseout="this.style.background='transparent';this.style.color='#00ffff'">Book Now</a>
+       </div>
+      </div><!-- King -->
+      <div class="room-card rounded-xl overflow-hidden shadow-md">
+       <div class="img-placeholder" style="background-image: url('images/king.jpeg'); background-size: cover; background-position: center; min-height: 220px;"><i data-lucide="bed-double" style="width:40px;height:40px;color:#00ffff;"></i></span>
+       </div>
+       <div class="p-6">
+        <div class="flex justify-between items-start mb-3">
+         <h3 class="font-display text-xl font-semibold text-white">King Room</h3><span id="price-king" class="font-display text-2xl font-bold" style="color: #00ffff;">₱6,000-₱8,000</span>
+        </div>
+        <p class="text-xs uppercase tracking-wider mb-3" style="color: #888;">per night</p>
+        <p class="text-sm mb-4 text-white">Elegant room featuring a plush king-size bed, work desk, rainfall shower, and premium amenities.</p>
+        <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">42 m²</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">Garden View</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">Work Desk</span>
+        </div><a href="#contact" class="block text-center py-2 text-sm tracking-wider uppercase border transition-all" style="border-color: #00ffff; color: #00ffff;" onmouseover="this.style.background='#00ffff';this.style.color='#0a0e27'" onmouseout="this.style.background='transparent';this.style.color='#00ffff'">Book Now</a>
+       </div>
+      </div><!-- Single -->
+      <div class="room-card rounded-xl overflow-hidden shadow-md">
+       <div class="img-placeholder" style="background-image: url('images/single.jpeg'); background-size: cover; background-position: center; min-height: 220px;"><i data-lucide="bed-single" style="width:40px;height:40px;color:#00ffff;"></i></span>
+       </div>
+       <div class="p-6">
+        <div class="flex justify-between items-start mb-3">
+         <h3 class="font-display text-xl font-semibold text-white">Single Room</h3><span id="price-single" class="font-display text-2xl font-bold" style="color: #00ffff;">₱2,000-₱4,800</span>
+        </div>
+        <p class="text-xs uppercase tracking-wider mb-3" style="color: #888;">per night</p>
+        <p class="text-sm mb-4 text-white">Compact and cozy, ideal for solo travelers. Features a comfortable single bed, ensuite bath, and smart TV.</p>
+        <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">22 m²</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">Smart TV</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">Ensuite</span>
+        </div><a href="#contact" class="block text-center py-2 text-sm tracking-wider uppercase border transition-all" style="border-color: #00ffff; color: #00ffff;" onmouseover="this.style.background='#00ffff';this.style.color='#0a0e27'" onmouseout="this.style.background='transparent';this.style.color='#00ffff'">Book Now</a>
+       </div>
+      </div><!-- Twin -->
+      <div class="room-card rounded-xl overflow-hidden shadow-md">
+       <div class="img-placeholder" style="background-image: url('images/twin.jpeg'); background-size: cover; background-position: center; min-height: 220px;"><i data-lucide="bed-single" style="width:40px;height:40px;color:#00ffff;"></i></span>
+       </div>
+       <div class="p-6">
+        <div class="flex justify-between items-start mb-3">
+         <h3 class="font-display text-xl font-semibold text-white">Twin Room</h3><span id="price-twin" class="font-display text-2xl font-bold" style="color: #00ffff;">₱5,000</span>
+        </div>
+        <p class="text-xs uppercase tracking-wider mb-3" style="color: #888;">per night</p>
+        <p class="text-sm mb-4 text-white">Two comfortable single beds, perfect for friends traveling together. Bright and airy with modern finishes.</p>
+        <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">30 m²</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">2 Beds</span> <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(0, 255, 255, 0.1); color: #00ffff;">Bright</span>
+        </div><a href="#contact" class="block text-center py-2 text-sm tracking-wider uppercase border transition-all" style="border-color: #00ffff; color: #00ffff;" onmouseover="this.style.background='#00ffff';this.style.color='#0a0e27'" onmouseout="this.style.background='transparent';this.style.color='#00ffff'">Book Now</a>
+       </div>
+      </div>
+     </div><!-- Room Inclusions -->
+     <div class="rounded-xl p-8 shadow-sm" style="background: linear-gradient(135deg, rgba(10, 14, 39, 0.9) 0%, rgba(26, 31, 78, 0.7) 100%); border: 1px solid rgba(0, 255, 255, 0.2);">
+      <h3 class="font-display text-2xl font-semibold text-center mb-8 text-white">All Rooms Include</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+       <div>
+        <i data-lucide="wifi" style="width:28px;height:28px;color:#00ffff;margin:0 auto 8px;display:block;"></i>
+        <p class="text-sm text-white">Complimentary Wi-Fi</p>
+       </div>
+       <div>
+        <i data-lucide="coffee" style="width:28px;height:28px;color:#00ffff;margin:0 auto 8px;display:block;"></i>
+        <p class="text-sm text-white">Coffee &amp; Tea Maker</p>
+       </div>
+       <div>
+        <i data-lucide="lock" style="width:28px;height:28px;color:#00ffff;margin:0 auto 8px;display:block;"></i>
+        <p class="text-sm text-white">In-Room Safe</p>
+       </div>
+       <div>
+        <i data-lucide="thermometer" style="width:28px;height:28px;color:#00ffff;margin:0 auto 8px;display:block;"></i>
+        <p class="text-sm text-white">Climate Control</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Room Service & Housekeeping -->
+   <section class="section-reveal py-20 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(135deg, #1a1f4e 0%, #0a0e27 100%);">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid md:grid-cols-2 gap-12">
+      <div class="p-8 rounded-xl glass-effect-strong">
+       <div class="flex items-center gap-3 mb-6"><i data-lucide="concierge-bell" style="width:28px;height:28px;color:#00ffff;"></i>
+        <h3 class="font-display text-2xl font-semibold text-white">Room Service</h3>
+       </div>
+       <p class="text-white/70 mb-6">Available 24 hours a day, our room service delivers gourmet meals, snacks, and beverages directly to your room.</p>
+       <ul class="space-y-3">
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Full breakfast, lunch &amp; dinner menus</li>
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Late-night snack menu until 2 AM</li>
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Special dietary accommodations</li>
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Wine &amp; cocktail selection</li>
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Children's menu available</li>
+       </ul>
+      </div>
+      <div class="p-8 rounded-xl glass-effect-strong">
+       <div class="flex items-center gap-3 mb-6"><i data-lucide="sparkles" style="width:28px;height:28px;color:#00ffff;"></i>
+        <h3 class="font-display text-2xl font-semibold text-white">Housekeeping &amp; Room Needs</h3>
+       </div>
+       <p class="text-white/70 mb-6">Our dedicated housekeeping team ensures your room is immaculate and your stay is comfortable at all times.</p>
+       <ul class="space-y-3">
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Daily housekeeping service</li>
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Turndown service each evening</li>
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Extra pillows, blankets &amp; towels on request</li>
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Laundry &amp; dry cleaning service</li>
+        <li class="flex items-center gap-3 text-white/80 text-sm"><i data-lucide="check" style="width:16px;height:16px;color:#00ffff;"></i>Iron, crib &amp; rollaway bed available</li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section><!-- Breakfast Section -->
+   <section class="section-reveal py-20 px-4 sm:px-6 lg:px-8" style="background: #0a0e27;">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="img-placeholder rounded-lg" style="background-image: url('images/breakfast.jpeg'); background-size: cover; background-position: center; min-height: 300px;"><i data-lucide="sunrise" style="width:48px;height:48px;color:#00ffff;"></i></span>
+      </div>
+      <div>
+       <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);">Morning Rituals</p>
+       <h2 class="font-display text-4xl font-bold mb-6 text-white">Breakfast</h2>
+       <div class="gold-line mb-6"></div>
+       <p class="mb-4" style="color: #888;">Start your day with our lavish breakfast buffet or enjoy à la carte options prepared by our chefs. Served daily from 6:30 AM to 10:30 AM.</p>
+       <div class="grid grid-cols-2 gap-3 mt-6">
+        <div class="flex items-center gap-2 text-sm" style="color: #999999;">
+         <i data-lucide="check-circle" style="width:16px;height:16px;color:#00ffff;"></i>Fresh pastries &amp; bread
+        </div>
+        <div class="flex items-center gap-2 text-sm" style="color: #999999;">
+         <i data-lucide="check-circle" style="width:16px;height:16px;color:#00ffff;"></i>Eggs to order
+        </div>
+        <div class="flex items-center gap-2 text-sm" style="color: #999999;">
+         <i data-lucide="check-circle" style="width:16px;height:16px;color:#00ffff;"></i>Seasonal fruit
+        </div>
+        <div class="flex items-center gap-2 text-sm" style="color: #999999;">
+         <i data-lucide="check-circle" style="width:16px;height:16px;color:#00ffff;"></i>Freshly squeezed juice
+        </div>
+        <div class="flex items-center gap-2 text-sm" style="color: #999999;">
+         <i data-lucide="check-circle" style="width:16px;height:16px;color:#00ffff;"></i>Pancakes &amp; waffles
+        </div>
+        <div class="flex items-center gap-2 text-sm" style="color: #999999;">
+         <i data-lucide="check-circle" style="width:16px;height:16px;color:#00ffff;"></i>Artisan coffee &amp; tea
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Dining Room Section -->
+   <section id="dining" class="section-reveal py-20 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 100%);">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-12">
+      <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);">Culinary Excellence</p>
+      <h2 id="restaurant-title" class="font-display text-4xl sm:text-5xl font-bold mb-4 text-white">The Meridian Table</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+      <p style="color: #888;" class="max-w-xl mx-auto">Our signature restaurant offers a refined dining experience with seasonal menus crafted from locally sourced ingredients.</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="img-placeholder rounded-lg" style="background-image: url('images/dining.jpeg'); background-size: cover; background-position: center; min-height: 280px;"><i data-lucide="utensils" style="width:48px;height:48px;color:#00ffff;"></i></span>
+      </div>
+      <div class="flex flex-col justify-center">
+       <p class="mb-4" style="color: #999999;">Open for lunch and dinner, The Meridian Table features an elegant ambiance with floor-to-ceiling windows, candlelit tables, and impeccable service.</p>
+       <p class="text-sm mb-2" style="color: #aaa;"><strong style="color: #aaa;">Lunch:</strong> 12:00 PM – 3:00 PM</p>
+       <p class="text-sm mb-6" style="color: #aaa;"><strong style="color: #aaa;">Dinner:</strong> 6:00 PM – 10:30 PM</p>
+       <p class="text-sm italic" style="color: #00ffff;">Smart casual dress code. Reservations recommended.</p>
+      </div>
+     </div><!-- Dining Menu -->
+     <div class="rounded-xl p-8 shadow-sm" style="background: linear-gradient(135deg, rgba(10, 14, 39, 0.9) 0%, rgba(26, 31, 78, 0.7) 100%); border: 1px solid rgba(0, 255, 255, 0.2);">
+      <h3 class="font-display text-2xl font-semibold text-center mb-2 text-white">Dinner Menu</h3>
+      <p class="text-center text-sm mb-8" style="color: #888;">A curated selection of our finest dishes</p><!-- Menu tabs -->
+      <div class="flex justify-center gap-4 mb-8 flex-wrap"><button class="tab-btn active text-sm tracking-wider uppercase px-4 py-2 border-b-2" style="border-color: #00ffff; color: #00ffff;" onclick="showMenuTab('starters')">Starters</button> <button class="tab-btn text-sm tracking-wider uppercase px-4 py-2 border-b-2 border-transparent" style="color: #aaa;" onclick="showMenuTab('mains')">Mains</button> <button class="tab-btn text-sm tracking-wider uppercase px-4 py-2 border-b-2 border-transparent" style="color: #aaa;" onclick="showMenuTab('desserts')">Desserts</button>
+      </div>
+      <div id="menu-starters" class="menu-section">
+       <div class="space-y-4 max-w-2xl mx-auto">
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Lobster Bisque</h4>
+          <p class="text-sm" style="color:#999;">Creamy bisque with cognac cream and chive oil</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱550</span>
+        </div>
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Tuna Tartare</h4>
+          <p class="text-sm" style="color:#999;">Yellowfin tuna, avocado mousse, sesame tuile</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱680</span>
+        </div>
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Burrata Caprese</h4>
+          <p class="text-sm" style="color:#999;">Heirloom tomatoes, basil pesto, aged balsamic</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱4,580</span>
+        </div>
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Truffle Arancini</h4>
+          <p class="text-sm" style="color:#999;">Crispy risotto balls, black truffle, parmesan cream</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱420</span>
+        </div>
+       </div>
+      </div>
+      <div id="menu-mains" class="menu-section hidden">
+       <div class="space-y-4 max-w-2xl mx-auto">
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Wagyu Beef Tenderloin</h4>
+          <p class="text-sm" style="color:#999;">Truffle jus, roasted bone marrow, seasonal vegetables</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱2,900</span>
+        </div>
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Pan-Seared Sea Bass</h4>
+          <p class="text-sm" style="color:#999;">Saffron risotto, fennel confit, lemon beurre blanc</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱950</span>
+        </div>
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Herb-Crusted Lamb Rack</h4>
+          <p class="text-sm" style="color:#999;">Rosemary jus, potato gratin, roasted garlic</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱1,300</span>
+        </div>
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Wild Mushroom Risotto</h4>
+          <p class="text-sm" style="color:#999;">Porcini, chanterelle, truffle oil, aged parmesan</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱650</span>
+        </div>
+       </div>
+      </div>
+      <div id="menu-desserts" class="menu-section hidden">
+       <div class="space-y-4 max-w-2xl mx-auto">
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Crème Brûlée</h4>
+          <p class="text-sm" style="color:#999;">Madagascar vanilla bean, caramelized sugar</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱280</span>
+        </div>
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Chocolate Fondant</h4>
+          <p class="text-sm" style="color:#999;">Molten center, raspberry coulis, vanilla gelato</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱320</span>
+        </div>
+        <div class="menu-item flex justify-between items-baseline p-3 rounded-lg">
+         <div>
+          <h4 class="font-display font-semibold text-white">Tiramisu</h4>
+          <p class="text-sm" style="color:#999;">Espresso-soaked ladyfingers, mascarpone, cocoa</p>
+         </div><span class="font-display font-semibold whitespace-nowrap ml-4" style="color:#00ffff;">₱300</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Bar Section -->
+   <section id="bar" class="section-reveal py-20 px-4 sm:px-6 lg:px-8" style="background: #0a0e27;">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-12">
+      <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);">Drinks &amp; Atmosphere</p>
+      <h2 id="bar-title" class="font-display text-4xl sm:text-5xl font-bold mb-4 text-white">The Amber Lounge</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-white/60 max-w-xl mx-auto">An intimate bar with a curated selection of craft cocktails, premium spirits, fine wines, and light bites in a sophisticated setting.</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="img-placeholder rounded-lg" style="background-image: url('images/bar.jpeg'); background-size: cover; background-position: center; min-height: 280px;"><i data-lucide="wine" style="width:48px;height:48px;color:#00ffff;"></i> </span>
+      </div>
+      <div class="flex flex-col justify-center">
+       <p class="text-white/70 mb-4">Settle into plush leather seating, enjoy live jazz on weekends, and let our mixologists create the perfect drink for your evening.</p>
+       <p class="text-sm mb-2 text-white/50"><strong class="text-white/80;">Hours:</strong> 5:00 PM – 1:00 AM daily</p>
+       <p class="text-sm mb-2 text-white/50"><strong class="text-white/80;">Live Music:</strong> Friday &amp; Saturday, 8 PM – 11 PM</p>
+       <p class="text-sm italic mt-4" style="color: #00ffff;">Happy Hour: 5 PM – 7 PM | 20% off all cocktails</p>
+      </div>
+     </div><!-- Bar Menu -->
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Cocktails -->
+      <div class="rounded-xl p-6" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 255, 255, 0.2);">
+       <h3 class="font-display text-lg font-semibold mb-4" style="color: #00ffff;">Signature Cocktails</h3>
+       <div class="space-y-3">
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Amber Old Fashioned</span><span style="color:#00ffff;">₱450</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Meridian Martini</span><span style="color:#00ffff;">₱420</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Lavender Gin Fizz</span><span style="color:#00ffff;">₱400</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Smoky Manhattan</span><span style="color:#00ffff;">₱480</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Espresso Martini</span><span style="color:#00ffff;">₱430</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Tropical Sunset Spritz</span><span style="color:#00ffff;">₱380</span>
+        </div>
+       </div>
+      </div><!-- Wines & Spirits -->
+      <div class="rounded-xl p-6" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 255, 255, 0.2);">
+       <h3 class="font-display text-lg font-semibold mb-4" style="color: #00ffff;">Wines &amp; Spirits</h3>
+       <div class="space-y-3">
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">House Red (glass)</span><span style="color:#00ffff;">₱350</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">House White (glass)</span><span style="color:#00ffff;">₱350</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Champagne (glass)</span><span style="color:#00ffff;">₱600</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Single Malt Scotch</span><span style="color:#00ffff;">₱550</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Premium Bourbon</span><span style="color:#00ffff;">₱520</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Craft Beer (pint)</span><span style="color:#00ffff;">₱280</span>
+        </div>
+       </div>
+      </div><!-- Bar Bites -->
+      <div class="rounded-xl p-6" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 255, 255, 0.2);">
+       <h3 class="font-display text-lg font-semibold mb-4" style="color: #00ffff;">Bar Bites</h3>
+       <div class="space-y-3">
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Truffle Fries</span><span style="color:#00ffff;">₱350</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Wagyu Sliders (3)</span><span style="color:#00ffff;">₱850</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Oysters (half dozen)</span><span style="color:#00ffff;">₱480</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Cheese Board</span><span style="color:#00ffff;">₱980</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Spiced Nuts Mix</span><span style="color:#00ffff;">₱220</span>
+        </div>
+        <div class="flex justify-between text-sm">
+         <span class="text-white/80">Bruschetta Trio</span><span style="color:#00ffff;">₱450</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Amenities: Pool, Gym, Spa -->
+   <section id="amenities" class="section-reveal py-20 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 100%);">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);">Wellness &amp; Leisure</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-4 text-white">Hotel Amenities</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Pool -->
+      <div class="room-card rounded-xl overflow-hidden shadow-md">
+       <div class="img-placeholder" style="background-image: url('images/pool.jpeg'); background-size: cover; background-position: center; min-height: 200px;"><i data-lucide="waves" style="width:40px;height:40px;color:#fff;"></i></span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-semibold mb-3 text-white">Swimming Pool</h3>
+        <p class="text-sm mb-3" style="color: #888888;">Our heated rooftop infinity pool offers breathtaking views of the city skyline. Poolside cabanas and service available.</p>
+        <ul class="space-y-2">
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Heated infinity pool</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Poolside bar &amp; snacks</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Private cabanas</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Open 7 AM – 10 PM</li>
+        </ul>
+       </div>
+      </div><!-- Gym -->
+      <div class="room-card rounded-xl overflow-hidden shadow-md">
+       <div class="img-placeholder" style="background-image: url('images/gym.jpeg'); background-size: cover; background-position: center; min-height: 200px;"><i data-lucide="dumbbell" style="width:40px;height:40px;color:#00ffff;"></i> </span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-semibold mb-3 text-white">Fitness Center</h3>
+        <p class="text-sm mb-3" style="color: #888888;">State-of-the-art equipment in a spacious, naturally lit gym. Personal trainers available upon request.</p>
+        <ul class="space-y-2">
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Cardio &amp; weight machines</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Free weights &amp; yoga area</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Personal training sessions</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Open 24 hours</li>
+        </ul>
+       </div>
+      </div><!-- Spa -->
+      <div class="room-card rounded-xl overflow-hidden shadow-md">
+       <div class="img-placeholder" style="background-image: url('images/spa.jpeg'); background-size: cover; background-position: center; min-height: 200px;"><i data-lucide="flower-2" style="width:40px;height:40px;color:#fff;"></i></span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-semibold mb-3 text-white">Spa &amp; Wellness</h3>
+        <p class="text-sm mb-3" style="color: #888888;">Rejuvenate with signature treatments in our tranquil spa. Sauna, steam room, and relaxation lounge included.</p>
+        <ul class="space-y-2">
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Swedish &amp; deep tissue massage</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Facial &amp; body treatments</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Sauna &amp; steam room</li>
+         <li class="flex items-center gap-2 text-sm" style="color: #888888;"><i data-lucide="check" style="width:14px;height:14px;color:#00ffff;"></i>Open 9 AM – 9 PM</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Conference Room Section -->
+   <section id="conference" class="section-reveal py-20 px-4 sm:px-6 lg:px-8" style="background: #0a0e27;">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+       <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);">Meetings &amp; Events</p>
+       <h2 class="font-display text-4xl font-bold mb-6 text-white">Conference Room</h2>
+       <div class="gold-line mb-6"></div>
+       <p class="mb-4" style="color: #888888;">Host your next meeting, corporate event, or private celebration in our versatile conference spaces. Equipped with the latest AV technology and supported by our dedicated events team.</p>
+       <div class="grid grid-cols-2 gap-4 mt-6">
+        <div class="p-4 rounded-lg text-center shadow-sm" style="background: rgba(0, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.2);">
+         <p class="font-display text-2xl font-bold" style="color: #00ffff;">200</p>
+         <p class="text-xs uppercase tracking-wider text-white/60">Max Capacity</p>
+        </div>
+        <div class="p-4 rounded-lg text-center shadow-sm" style="background: rgba(0, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.2);">
+         <p class="font-display text-2xl font-bold" style="color: #00ffff;">4</p>
+         <p class="text-xs uppercase tracking-wider text-white/60">Meeting Rooms</p>
+        </div>
+        <div class="p-4 rounded-lg text-center shadow-sm" style="background: rgba(0, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.2);">
+         <p class="font-display text-2xl font-bold" style="color: #00ffff;">4K</p>
+         <p class="text-xs uppercase tracking-wider text-white/60">AV Displays</p>
+        </div>
+        <div class="p-4 rounded-lg text-center shadow-sm" style="background: rgba(0, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.2);">
+         <p class="font-display text-2xl font-bold" style="color: #00ffff;">24/7</p>
+         <p class="text-xs uppercase tracking-wider text-white/60">Tech Support</p>
+        </div>
+       </div>
+      </div>
+      <div class="img-placeholder rounded-lg" style="background-image: url('images/conference.jpeg'); background-size: cover; background-position: center; min-height: 350px;"><i data-lucide="presentation" style="width:48px;height:48px;color:#00ffff;"></i></span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact / Footer -->
+   <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8" style="background: #0a0e27; border-top: 1px solid rgba(0, 255, 255, 0.2);">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-12">
+      <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);">Get In Touch</p>
+      <h2 class="font-display text-4xl font-bold text-white mb-4">Contact &amp; Reservations</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      <div class="text-center"><i data-lucide="map-pin" style="width:28px;height:28px;color:#00ffff;margin:0 auto 12px;display:block;"></i>
+       <p class="text-sm text-white/60 mb-1">Address</p>
+       <p id="footer-address" class="text-white text-sm">5th Avenue, Bonifacio Global City, Taguig, 1634 Metro Manila, Philippines<br>
+         Coastal City, CC 90210</p>
+      </div>
+      <div class="text-center"><i data-lucide="phone" style="width:28px;height:28px;color:#00ffff;margin:0 auto 12px;display:block;"></i>
+       <p class="text-sm text-white/60 mb-1">Phone</p>
+       <p id="footer-phone" class="text-white text-sm">+63 927 771 6771</p>
+      </div>
+      <div class="text-center"><i data-lucide="mail" style="width:28px;height:28px;color:#00ffff;margin:0 auto 12px;display:block;"></i>
+       <p class="text-sm text-white/60 mb-1">Email</p>
+       <p id="footer-email" class="text-white text-sm">azenithgrandmeridianhotel.gmail.com</p>
+      </div>
+      <div class="text-center"><i data-lucide="clock" style="width:28px;height:28px;color:#00ffff;margin:0 auto 12px;display:block;"></i>
+       <p class="text-sm text-white/60 mb-1">Front Desk</p>
+       <p class="text-white text-sm">24 Hours / 7 Days</p>
+      </div>
+     </div><!-- Inquiry Form -->
+     <div class="max-w-xl mx-auto rounded-xl p-8 glass-effect-strong">
+      <h3 class="font-display text-xl font-semibold text-white text-center mb-6">Send an Inquiry</h3>
+      <form id="inquiry-form" onsubmit="handleInquiry(event)" class="space-y-4">
+       <div class="grid sm:grid-cols-2 gap-4">
+        <div><label for="inq-name" class="block text-xs uppercase tracking-wider text-white/60 mb-1">Name</label> <input id="inq-name" type="text" required class="w-full px-4 py-2 rounded-lg bg-white/10 text-white text-sm border border-white/10 focus:border-[#00ffff] focus:outline-none transition" placeholder="Your name">
+        </div>
+        <div><label for="inq-email" class="block text-xs uppercase tracking-wider text-white/60 mb-1">Email</label> <input id="inq-email" type="email" required class="w-full px-4 py-2 rounded-lg bg-white/10 text-white text-sm border border-white/10 focus:border-[#00ffff] focus:outline-none transition" placeholder="you@email.com">
+        </div>
+       </div>
+       <div><label for="inq-message" class="block text-xs uppercase tracking-wider text-white/60 mb-1">Message</label> <textarea id="inq-message" rows="4" required class="w-full px-4 py-2 rounded-lg bg-white/10 text-white text-sm border border-white/10 focus:border-[#00ffff] focus:outline-none transition resize-none" placeholder="How can we help?"></textarea>
+       </div><button type="submit" class="w-full py-3 text-sm tracking-widest uppercase font-semibold transition-all duration-300 rounded-lg" style="background: #00ffff; color: #ffffff;" onmouseover="this.style.background='#00e6ff';this.style.boxShadow='0 0 30px rgba(0, 255, 255, 0.5)'" onmouseout="this.style.background='#00ffff';this.style.boxShadow='none'">Send Message</button>
+       <p id="form-success" class="text-center text-sm hidden" style="color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);">Thank you! We'll be in touch shortly.</p>
+      </form>
+     </div><!-- Footer bottom -->
+     <div class="mt-16 pt-8 text-center" style="border-top: 1px solid rgba(255,255,255,0.1);">
+      <p id="footer-hotel-name" class="font-display text-lg mb-2" style="color: #00ffff; text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);">Grand Meridian Zenith Hotel</p>
+      <p class="text-xs text-white/40">© 2026 Grand Meridian Zenith Hotel. All rights reserved.</p>
+     </div>
+    </div>
+   </section>
+  </div>
+  <script>
+// Mobile nav toggle
+function toggleMobileNav() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+}
+
+// Menu tab switching
+function showMenuTab(tab) {
+  document.querySelectorAll('.menu-section').forEach(s => s.classList.add('hidden'));
+  document.getElementById('menu-' + tab).classList.remove('hidden');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// Nav scroll effect
+const nav = document.getElementById('main-nav');
+document.getElementById('app-wrapper').addEventListener('scroll', function() {
+  if (this.scrollTop > 80) {
+    nav.style.background = 'rgba(10, 14, 39, 0.95)';
+    nav.style.backdropFilter = 'blur(10px)';
+    nav.style.boxShadow = '0 2px 20px rgba(0, 255, 255, 0.2)';
+  } else {
+    nav.style.background = 'transparent';
+    nav.style.backdropFilter = 'none';
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// Section reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.section-reveal').forEach(s => observer.observe(s));
+
+// Form handler
+function handleInquiry(e) {
+  e.preventDefault();
+  document.getElementById('form-success').classList.remove('hidden');
+  e.target.reset();
+  setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 4000);
+}
+
+// Element SDK
+const defaultConfig = {
+  hotel_name: 'Grand Meridian Zenith Hotel',
+  hotel_tagline: 'Experience Tomorrow, Today',
+  hero_subtitle: 'Next-generation luxury awaits with cutting-edge design, immersive experiences, and the pinnacle of hospitality.',
+  deluxe_price: '₱11,000-₱13,000',
+  king_price: '₱6,000-₱8,000',
+  single_price: '₱2,000-₱4,800',
+  twin_price: '₱5,000',
+  restaurant_name: 'The Meridian Table',
+  bar_name: 'The Amber Lounge',
+  hotel_address: '5th Avenue, Bonifacio Global City, Taguig, 1634 Metro Manila, Philippines',
+  hotel_phone: '+63 927 771 6771',
+  hotel_email: 'azenithgrandmeridianhotel.gmail.com',
+  background_color: '#0a0e27',
+  surface_color: '#1a1f4e',
+  text_color: '#ffffff',
+  primary_action_color: '#00ffff',
+  secondary_action_color: '#9370db',
+  font_family: 'Playfair Display',
+  font_size: 16
+};
+
+async function applyConfig(config) {
+  const c = { ...defaultConfig, ...config };
+
+  // Text updates
+  document.getElementById('nav-hotel-name').textContent = c.hotel_name.replace(' Hotel', '');
+  document.getElementById('hero-title').innerHTML = c.hotel_name.replace(' ', '<br/>');
+  document.getElementById('hero-tagline').textContent = c.hotel_tagline;
+  document.getElementById('hero-subtitle').textContent = c.hero_subtitle;
+  document.getElementById('price-deluxe').textContent = c.deluxe_price;
+  document.getElementById('price-king').textContent = c.king_price;
+  document.getElementById('price-single').textContent = c.single_price;
+  document.getElementById('price-twin').textContent = c.twin_price;
+  document.getElementById('restaurant-title').textContent = c.restaurant_name;
+  document.getElementById('bar-title').textContent = c.bar_name;
+  document.getElementById('footer-address').textContent = c.hotel_address;
+  document.getElementById('footer-phone').textContent = c.hotel_phone;
+  document.getElementById('footer-email').textContent = c.hotel_email;
+  document.getElementById('footer-hotel-name').textContent = c.hotel_name;
+
+  // Colors
+  document.getElementById('app-wrapper').style.backgroundColor = c.background_color;
+
+  // Font
+  const fontStack = c.font_family + ', serif';
+  document.querySelectorAll('.font-display').forEach(el => el.style.fontFamily = fontStack);
+
+  // Font size
+  const base = c.font_size;
+  document.querySelectorAll('p:not(.text-xs)').forEach(el => {
+    if (!el.classList.contains('text-sm')) el.style.fontSize = base + 'px';
+  });
+}
+
+if (window.elementSdk) {
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: applyConfig,
+    mapToCapabilities: (config) => {
+      const c = { ...defaultConfig, ...config };
+      return {
+        recolorables: [
+          { get: () => c.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => c.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+          { get: () => c.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => c.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+          { get: () => c.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => c.font_family,
+          set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+        },
+        fontSizeable: {
+          get: () => c.font_size,
+          set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+        }
+      };
+    },
+    mapToEditPanelValues: (config) => {
+      const c = { ...defaultConfig, ...config };
+      return new Map([
+        ['hotel_name', c.hotel_name],
+        ['hotel_tagline', c.hotel_tagline],
+        ['hero_subtitle', c.hero_subtitle],
+        ['deluxe_price', c.deluxe_price],
+        ['king_price', c.king_price],
+        ['single_price', c.single_price],
+        ['twin_price', c.twin_price],
+        ['restaurant_name', c.restaurant_name],
+        ['bar_name', c.bar_name],
+        ['hotel_address', c.hotel_address],
+        ['hotel_phone', c.hotel_phone],
+        ['hotel_email', c.hotel_email]
+      ]);
+    }
+  });
+}
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eca28d7c47bba05',t:'MTc3NjI0NzgxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
